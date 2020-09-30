@@ -1,7 +1,7 @@
 configfile:
   - defaults/parameters.yaml
-  - swiss_profile/builds.yaml
-  - swiss_profile/swiss-config.yaml
+  - cluster_profile/builds.yaml
+  - cluster_profile/cluster-config.yaml
 
 keep-going: True
 printshellcmds: True
