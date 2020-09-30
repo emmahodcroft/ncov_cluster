@@ -1,0 +1,2 @@
+
+localrules: "cluster_profile/localrules.smk"

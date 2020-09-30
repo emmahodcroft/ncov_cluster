@@ -1,0 +1,106 @@
+# Define locations for which builds should be created.
+# For each build we specify a subsampling scheme via an explicit key.
+# If the name of the focal geography differs from the build name this needs to
+# be specified explicity as geographic_name. In addition, we require the
+# geographic scale the build focuses on. Together name and scale serve a look-up
+# in the geo_hierarchy to define region, country, division, etc
+builds_no:
+  switzerland:
+    subsampling_scheme: switzerland
+    geographic_scale: country
+    region: Europe
+    country: Switzerland
+    title: "Phylogenetic analysis of Swiss SARS-CoV-2 genomes in their international context"
+    
+builds:
+  cluster:
+    subsampling_scheme: cluster_sampling
+    geographic_scale: country
+    country: United Kingdom
+    title: "Phylogenetic analysis of SARS-CoV-2 clusters in their international context"
+
+inactive_builds:
+  basel-stadt:
+    subsampling_scheme: canton
+    geographic_scale: division
+    region: Europe
+    country: Switzerland
+    division: Basel-Stadt
+
+subsampling:
+  # Default subsampling logic for countries
+  switzerland:
+    # Focal samples for country
+    country:
+      group_by: "division year month"
+      seq_per_group: 200
+      exclude: "--exclude-where 'country!={country}'"
+    # Contextual samples from country's region
+    region:
+      group_by: "country year month"
+      seq_per_group: 20
+      exclude: "--exclude-where 'country={country}' 'region!={region}'"
+      priorities:
+        type: "proximity"
+        focus: "country"
+    # Contextual samples from the rest of the world,
+    # excluding the current region to avoid resampling.
+    global:
+      group_by: "country year month"
+      seq_per_group: 10
+      exclude: "--exclude-where 'region={region}'"
+      priorities:
+        type: "proximity"
+        focus: "country"
+
+  # Default subsampling logic for clusters
+  cluster_sampling:
+    # Focal samples for country
+    cluster:
+      group_by: "division year month"
+      seq_per_group: 5000
+    # Contextual samples from globe
+    global:
+      group_by: "year month"
+      seq_per_group: 30
+      priorities:
+        type: "proximity"
+        focus: "cluster"
+
+  # Default subsampling logic for divisions
+  canton:
+    # Focal samples for division
+    division:
+      group_by: "year month"
+      seq_per_group: 300
+      exclude: "--exclude-where 'region!={region}' 'country!={country}' 'division!={division}'"
+    # Contextual samples from division's country
+    country:
+      group_by: "division year month"
+      seq_per_group: 20
+      exclude: "--exclude-where 'region!={region}' 'country!={country}' 'division={division}'"
+      priorities:
+        type: "proximity"
+        focus: "division"
+    # Contextual samples from division's region
+    region:
+      group_by: "country year month"
+      seq_per_group: 10
+      exclude: "--exclude-where 'region!={region}' 'country={country}'"
+      priorities:
+        type: "proximity"
+        focus: "division"
+    # Contextual samples from the rest of the world, excluding the current
+    # division to avoid resampling.
+    global:
+      group_by: "country year month"
+      seq_per_group: 5
+      exclude: "--exclude-where 'region={region}'"
+      priorities:
+        type: "proximity"
+        focus: "division"
+
+files:
+  colors: "cluster_profile/colors.tsv"
+  auspice_config: "cluster_profile/auspice_config_cluster.json"
+  description: "cluster_profile/description.md"
