@@ -27,6 +27,6 @@
         "mem": "32G"
     },
     "proximity_score":{
-	"mem": "32G"
+	"mem": "64G"
     }
 }
