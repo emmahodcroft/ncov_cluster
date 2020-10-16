@@ -54,3 +54,9 @@ Houston	Texas
 Bergen	Vestland
 Counties Manukau	Auckland
 Waitemata	Auckland
+Los Angeles County	California
+Lutsk	Volyn
+Zehra	Kosice
+Martincek	Zilina
+Capital and Coast	Wellington
+Hutt Valley	Wellington

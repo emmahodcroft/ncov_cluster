@@ -356,21 +356,31 @@ location	Hong Kong
 
 ### Indonesia
 # Banten
+location	South Tangerang
 location	Tangerang
 
 # West Java
 location	Bandung
+location	Purwakarta
+location	Bogor Regency
+
+# Yogyakarta
+location	Sleman
 
 # East Java
-location	Pasuruan
+location	Purwokerto
 location	Sidoarjo
 location	Surabaya
+location	Pasuruan
 
 # East Kalimantan
 location	Samarinda
 
 # North Sulawesi
 location	Manado
+
+# Papua
+location	Timika
 
 ### Taiwan
 # Taiwan
@@ -394,6 +404,7 @@ location	Seoul
 location	Kyoto
 
 # Aichi
+location	Nagoya
 location	Aichi
 
 # Tokyo
@@ -408,6 +419,10 @@ location	Tokyo
 location	Waitemata
 location	Auckland
 location	Counties Manukau
+
+# Wellington
+location	Capital and Coast
+location	Hutt Valley
 
 ### Australia
 # Western Australia
@@ -530,7 +545,7 @@ location	Penacova
 
 ### Spain
 # Canary Islands
-location	Las Palmas
+location	Las Palmas de Gran Canaria
 location	Lanzarote
 
 # Galicia
@@ -678,6 +693,7 @@ location	Valencia de Don Juan
 location	Villaturiel
 
 # Cantabria
+location	Comillas
 location	Cabezon de la Sal
 location	Santillana
 location	Puente San Miguel
@@ -696,13 +712,17 @@ location	Liencres
 location	Santa Cruz de Bezana
 location	La Penilla
 location	Muriedas
+location	Santa Maria de Cayon
 location	Maliano
 location	Santander
 location	Pontejos
 location	Marina de Cudeyo
+location	Solares
+location	San Roque de Riomiera
 location	Ramales de la Victoria
 location	Santona
 location	Laredo
+location	Ampuero
 location	Castro Urdiales
 
 # Madrid
@@ -910,6 +930,7 @@ location	Granollers
 location	El Masnou
 location	Vilasar de Mar
 location	Mataro
+location	Gerona
 location	Palamos
 
 # Balear Islands
@@ -960,6 +981,7 @@ location	Limoges
 # Centre-Val de Loire
 location	Tours
 location	Abondant
+location	Angers
 
 # Ile de France
 location	Montigny le Bretonneux
@@ -969,9 +991,12 @@ location	Guyancourt
 location	Saint Germain en Laye
 location	Pontoise
 location	Le Pecq
+location	Le Chesnay
 location	Orsay
 location	Garches
 location	Meudon la Forêt
+location	Boulogne Billancourt
+location	Argenteuil
 location	Colombes
 location	Asnières-sur-Seine
 location	Levallois-Perret
@@ -980,20 +1005,32 @@ location	Gennevilliers
 location	Longjumeau
 location	Paris
 location	Juvisy-sur-Orge
+location	Sarcelles
 location	Seine-Port
 location	Moussy Le Neuf
 location	Saint-Thibault-des-Vignes
 
 # Hauts de France
-location	Crouy en Thelle
-location	Compiègne
-location	Crépy en Valois
 location	Nogent-l'Artaud
 location	Chateau-Thierry
+location	Crouy en Thelle
+location	Crépy en Valois
+location	Compiègne
+location	Santes
+location	Lille
 
 # Bretagne
 location	Ploudalmezeau
+location	Lannilis
 location	Brest
+location	Morlaix
+location	Saint Pierre Quiberon
+location	Arradon
+location	Pordic
+location	Vannes
+location	Sene
+location	La Rochelle
+location	Cayenne
 location	Rennes
 
 # Occitanie
@@ -1015,6 +1052,7 @@ location	Saint-Priest
 location	Decines
 location	Bourg-en-Bresse
 location	Bourgoin-Jallieu
+location	Montagnieu
 location	Oyonnax
 location	Chambery
 location	Contamine-sur-Arve
@@ -1029,10 +1067,31 @@ location	Montreux-Chateau
 # Grand Est
 location	Reims
 location	Gondrecourt-le-Chateau
+location	Crusnes
+location	Joeuf
+location	Fameck
+location	Marange Silvange
+location	Amneville
 location	Woippy
+location	Montigny Les Metz
+location	Maizières Les Metz
+location	Talange
+location	Metz
 location	Nancy
+location	Ottonville
 location	Ham Sous Varsberg
+location	Munster
 location	Spicheren
+location	Sarreguemines
+location	Soultzeren
+location	Murbach
+location	Guebwiller
+location	Soultz Haut Rhin
+location	Liepvre
+location	Ingersheim
+location	Ensisheim
+location	Reguisheim
+location	Biesheim
 location	Strasbourg
 
 # Provence-Alpes-Côte d'Azur
@@ -1216,6 +1275,7 @@ location	Hemiksem
 location	Aartselaar
 location	Wilrijk
 location	Ekeren
+location	Edegem
 location	Deurne
 location	Kalmthout
 location	Brasschaat
@@ -1486,7 +1546,11 @@ location	Münster
 location	Rostock
 
 ### Italy
+# Piedmont
+location	Turin
+
 # Lombardy
+location	Pavia
 location	Milan
 
 # Tuscany
@@ -1624,6 +1688,13 @@ location	Warszawa
 location	Brodno-Warszawa
 location	Radom
 
+### Slovakia
+# Zilina
+location	Martincek
+
+# Kosice
+location	Zehra
+
 ### Hungary
 # Central Hungary
 location	Budapest
@@ -1657,11 +1728,34 @@ location	Rovaniemi
 # Rezina
 location	Rabnita
 
+### Ukraine
+# Volyn
+location	Lutsk
+
 ### Russia
 # Leningrad Region
 location	Kipen
 
-# Buryat Republic
+# Sverdlovsk
+location	Ekaterinburg
+location	Verkhnyaya Pyshma
+
+# Omsk
+location	Ust-Ishim
+location	Moskalenki
+location	Maryanovka
+location	Lyubinsky
+location	Azovo
+location	Omsk
+location	Russkaya Polyana
+location	Kalachinsk
+location	Novovarshavka
+location	Cherlak
+location	Nizhnyaya Omka
+location	Muromtsevo
+location	Sedelnikovo
+
+# Buryatia
 location	Ulan-Ude
 
 ################
@@ -1723,6 +1817,7 @@ location	Araçatuba
 location	Assis
 location	Birigui
 location	Americana
+location	Sumare
 location	Hortolandia
 location	Itariri
 location	Campinas
@@ -1738,6 +1833,7 @@ location	Itatiba
 location	Osasco
 location	Taboao Da Serra
 location	Caieiras
+location	Jarinu
 location	São Paulo
 location	Diadema
 location	Sao Bernardo do Campo
@@ -1747,6 +1843,7 @@ location	Sao Vicente
 location	Guarujá
 location	Santa Isabel
 location	Mogi Das Cruzes
+location	Taubate
 
 # Rio de Janeiro
 location	Resende
@@ -1783,10 +1880,26 @@ location	Riachuelo
 location	Nossa Senhora Da Gloria
 
 # Pernambuco
+location	Tabira
 location	Caruaru
+location	Jaqueira
+location	Camocim de Sao Felix
+location	Catende
+location	Palmares
+location	Passira
+location	Cha Grande
+location	Gameleira
+location	Primavera
+location	Lagoa do Carro
+location	Vitoria de Santo Antao
+location	Carpina
 location	Alianca
+location	Tamandaré
+location	Condado
 location	Ipojuca
 location	Sao Lourenco Da Mata
+location	Cabo de Santo Agostinho
+location	Goiana
 location	Camaragibe
 location	Jaboatao Dos Guararapes
 location	Recife
@@ -1807,6 +1920,9 @@ location	Callao
 location	Cañete
 location	Lima
 location	Huarochiri
+
+# Junin
+location	Huancayo
 
 # Ancash
 location	Santa
@@ -2120,8 +2236,8 @@ location	San Juan County
 location	Thurston County
 location	Cowlitz County
 location	Clark County WA
+location	Pierce County WA
 location	Kirkland
-location	Pierce County
 location	Snohomish County
 location	King County
 location	Seattle
@@ -2197,10 +2313,13 @@ location	El Paso County
 location	Brewster County
 location	Deaf Smith County
 location	Ector County
+location	Crosby
 location	Val Verde County
 location	Ochiltree County
+location	Taylor
 location	Webb County
 location	Llano County
+location	Comanche County
 location	Bexar County
 location	Comal County
 location	Hidalgo County
@@ -2221,17 +2340,18 @@ location	Burleson County
 location	Limestone County
 location	Washington County TX
 location	Kaufman County
+location	Wharton County
 location	Waller County
 location	Grimes County
 location	Lamar County
 location	Montgomery County TX
-location	Houston
 location	Harris County
 location	Greater Houston Area
 location	Red River County
 location	Galveston County
 location	Titus County
 location	Panola County
+location	Jefferson County TX
 
 # Minnesota
 location	Fillmore County
@@ -2255,13 +2375,24 @@ location	Jackson County IA
 location	Caddo Parish
 location	DeSoto Parish
 location	Bossier Parish
+location	Sabine Parish
 location	Webster Parish
+location	Red River Parish
+location	Natchitoches Parish
 location	Bienville Parish
+location	Claiborne Parish
+location	Lincoln Parish
 location	Grant Parish
 location	Rapides Parish
+location	Union Parish
+location	Ouachita Parish
+location	Avoyelles Parish
+location	Richland Parish
 location	Morehouse Parish
 location	Iberville Parish
 location	Tensas Parish
+location	East Carroll Parish
+location	Madison Parish
 location	East Baton Rouge Parish
 location	Assumption Parish
 location	East Feliciana Parish
@@ -2277,15 +2408,20 @@ location	St. Louis MO
 
 # Wisconsin
 location	Crawford County
+location	Polk County
+location	Pierce County WI
 location	Pepin County
+location	Barron County
 location	Buffalo County
 location	Trempealeau County
 location	Eau Claire County
 location	Chippewa County WI
+location	Sawyer County
 location	La Crosse County
 location	Vernon County
 location	Jackson County WI
 location	Grant County WI
+location	Ashland County
 location	Monroe County
 location	Richland County WI
 location	Lafayette County
@@ -2314,8 +2450,10 @@ location	Walworth County
 location	Fond Du Lac County
 location	Outagamie County
 location	Campbellsport
+location	Oconto County
 location	Waukesha County
 location	Washington County WI
+location	Kenosha County
 location	Brown County WI
 location	Thiensville
 location	Milwaukee County
@@ -2359,6 +2497,7 @@ location	Fairfield County SC
 location	Columbia SC
 location	Richland County SC
 location	Berkeley County
+location	Williamsburg
 location	Georgetown
 location	Horry
 
@@ -2369,6 +2508,11 @@ location	Montgomery County PA
 
 # Washington DC
 location	District of Columbia County
+
+# Delaware
+location	Sussex
+location	Kent
+location	New Castle
 
 # New Jersey
 location	Camden County
@@ -2517,7 +2661,11 @@ division	Amman
 division	Irbid
 
 ### Georgia
+division	Georgia (Europe)
 division	Tbilisi
+
+### Iraq
+division	Al-Muthanna Province
 
 ### Saudi Arabia
 division	Jeddah
@@ -2569,6 +2717,9 @@ division	Rawalpindi
 division	Khyber Pakhtunkhwa
 division	Islamabad
 division	Gilgit Baltistan
+
+### Maldives
+division	Maldives
 
 ### Kyrgyzstan
 division	Kyrgyzstan
@@ -2647,6 +2798,7 @@ division	Singapore
 
 ### China
 division	Yunnan
+division	Gansu
 division	Sichuan
 division	China
 division	Chongqing
@@ -2686,7 +2838,7 @@ division	North Sumatra
 division	Banten
 division	Jakarta
 division	West Java
-division	Special Region of Yogyakarta
+division	Yogyakarta
 division	Central Java
 division	East Java
 division	Center Kalimantan
@@ -2754,13 +2906,14 @@ division	Otago
 division	Canterbury
 division	New Zealand
 division	Nelson Marlborough
+division	Taranaki
 division	Auckland
-division	Combined Wellington
 division	Wellington
 division	Waikato
 division	Wairarapa
 division	Midcentral
 division	Lakes
+division	Hawkes Bay
 division	Bay of Plenty
 
 ### Australia
@@ -2792,6 +2945,9 @@ division	Limpopo
 division	Mpumalanga
 division	KwaZulu-Natal
 
+### Botswana
+division	Gaborone
+
 ### Madagascar
 division	Analamanga
 division	Analanjirofo
@@ -2810,7 +2966,14 @@ division	Nord Kivu
 ### Gabon
 division	Libreville
 
+### Republic of the Congo
+division	Brazzaville
+
 ### Kenya
+division	Kwale
+division	Mombasa
+division	Taita Taveta
+division	Kilifi
 division	Kenya
 
 ### Uganda
@@ -2908,7 +3071,9 @@ division	Coimbra
 
 ### Ireland
 division	Kerry
+division	Mayo
 division	Galway
+division	Clare
 division	Limerick
 division	Sligo
 division	Cork
@@ -2918,6 +3083,7 @@ division	Leitrim
 division	Ireland
 division	Offaly
 division	Laois
+division	Westmeath
 division	Cavan
 division	Kilkenny
 division	Waterford
@@ -3061,6 +3227,7 @@ division	Aargau
 division	Switzerland
 division	Obwalden
 division	Lucerne
+division	Nidwalden
 division	Zug
 division	Uri
 division	Schaffhausen
@@ -3126,6 +3293,9 @@ division	Molise
 division	Campania
 division	Basilicata
 division	Apulia
+
+### Malta
+division	Malta
 
 ### Slovenia
 division	Slovenia
@@ -3216,7 +3386,7 @@ division	Gorazde
 
 ### Poland
 division	Zielonogorskie
-division	Dolnoslaskie
+division	Dolnośląskie
 division	Wielkopolskie
 division	Opolskie
 division	Pomorskie
@@ -3230,7 +3400,10 @@ division	Mazowieckie
 ### Slovakia
 division	Kostoliste
 division	Bratislava
+division	Pezinok
+division	Zilina
 division	Martin
+division	Slovakia
 division	Kosice
 
 ### Montenegro
@@ -3333,7 +3506,11 @@ division	Balti
 division	Soroca
 
 ### Ukraine
+division	Ivano-Frankivsk
+division	Volyn
+division	Kyiv
 division	Ukraine
+division	Kharkiv
 
 ### Cyprus
 division	Cyprus
@@ -3368,35 +3545,34 @@ division	Agri
 division	Kars Province
 
 ### Russia
-division	Pskov Region
+division	Pskov
 division	Saint-Petersburg
 division	Leningrad Region
-division	Bryansk Oblast
-division	Tver Region
+division	Bryansk
+division	Tver
 division	Moscow
 division	Moscow Region
-division	Yaroslavl Oblast
-division	Lipetsk Region
-division	Krasnodar Region
-division	Republic of Kabardino-Balkaria
-division	Chechen Republic
-division	Samara Region
+division	Yaroslavl
+division	Lipetsk
+division	Krasnodar
+division	Kabardino-Balkaria
+division	Chechen
+division	Samara
 division	Tatarstan
-division	Orenburg Region
-division	Republic of Bashkortostan
-division	Perm Region
-division	Chelyabinsk Region
-division	Sverdlovsk Region
-division	Omsk Region
-division	Yamalo-Nenets Autonomous Okrug
-division	Novosibirsk Oblast
-division	Krasnoyarsk Region
-division	Buryat Republic
-division	Republic of Buryatia
+division	Orenburg
+division	Perm
+division	Bashkortostan
+division	Chelyabinsk
+division	Sverdlovsk
+division	Omsk
+division	Yamalo-Nenets
+division	Novosibirsk
+division	Krasnoyarsk
+division	Buryatia
 division	Republic of Sakha
-division	Khabarovsk Region
-division	Primorskiy Region
-division	Sakhalin Region
+division	Khabarovsk
+division	Primorsky
+division	Sakhalin
 
 ################
 
@@ -3587,20 +3763,31 @@ division	Sinaloa
 division	Chihuahua
 division	Nayarit
 division	Durango
+division	Colima
 division	Jalisco
 division	Guadalajara
+division	Zacatecas
+division	Aguascalientes
 division	Coahuila
+division	Michoacan
 division	Guanajuato
+division	San Luis Potosi
 division	Queretaro
+division	Nuevo Leon
 division	Guerrero
 division	Estado de Mexico
 division	Mexico City
 division	Mexico
+division	Hidalgo
 division	Morelos
 division	Tamaulipas
 division	Puebla
+division	Tlaxcala
+division	Veracruz
+division	Oaxaca
 division	Chiapas
 division	Tabasco
+division	Campeche
 division	Yucatan
 division	Quintana Roo
 
@@ -3652,6 +3839,7 @@ division	Virginia
 division	Pennsylvania
 division	Washington DC
 division	Maryland
+division	Delaware
 division	New Jersey
 division	New York
 division	Connecticut
@@ -3685,6 +3873,7 @@ country	Israel
 country	Lebanon
 country	Jordan
 country	Georgia
+country	Iraq
 country	Saudi Arabia
 country	Kuwait
 country	Bahrain
@@ -3695,6 +3884,7 @@ country	Oman
 country	Uzbekistan
 country	Kazakhstan
 country	Pakistan
+country	Maldives
 country	Kyrgyzstan
 country	India
 country	Sri Lanka
@@ -3725,10 +3915,12 @@ country	Guam
 
 # Africa
 country	South Africa
+country	Botswana
 country	Madagascar
 country	Zambia
 country	Democratic Republic of the Congo
 country	Gabon
+country	Republic of the Congo
 country	Kenya
 country	Uganda
 country	Cameroon
@@ -3764,6 +3956,7 @@ country	Denmark
 country	Germany
 country	Europe
 country	Italy
+country	Malta
 country	Slovenia
 country	Sweden
 country	Austria
