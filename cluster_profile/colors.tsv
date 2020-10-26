@@ -31,39 +31,6 @@ country	Portugal	#DE3D27
 country	Greece	#DB2823
 
 
-division	Liechtenstein	#5E1D9D
-division	St. Gallen	#4C24AF
-division	Sankt Gallen	#4C24AF
-division	Graubünden	#4433BE
-division	Thurgau	#3F45C8
-division	Appenzell Ausserrhoden	#3E58CF
-division	Appenzell Innerrhoden	#416BCF
-division	Glarus	#447DCC
-division	Zürich	#4A8BC3
-division	Schaffhausen	#5098B9
-division	Luzern	#58A2AC
-division	Lucerne	#58A2AC
-division	Uri	#61AA9D
-division	Schwyz	#6BB18E
-division	Obwalden	#76B680
-division	Nidwalden	#82BA71
-division	Zug	#8FBC65
-division	Aargau	#9DBE5A
-division	Basel-Stadt	#ABBD52
-division	Basel-Landschaft	#B9BC4A
-division	Basel-Land	#B9BC4A
-division	Bern	#D1B440
-division	Fribourg	#DAAC3D
-division	Solothurn	#E1A13A
-division	Neuchâtel	#E69437
-division	Jura	#E68134
-division	Vaud	#E56E30
-division	Valais	#E2562B
-division	Geneva	#DE3F27
-division	Ticino	#DB2823
-
-division	Switzerland	#636363
-
 recency	Older	#416DCE
 recency	One month ago	#59A3AA
 recency	One week ago	#84BA6F
