@@ -1,6 +1,6 @@
 {
   "title": "Genomic epidemiology of novel coronavirus cluster",
-  "build_url": "https://github.com/emmahodcroft/ncov",
+  "build_url": "https://github.com/emmahodcroft/ncov_cluster",
   "maintainers": [
     {"name": "Emma Hodcroft", "url": "https://neherlab.org"},
     {"name": "Richard Neher", "url": "https://neherlab.org"}
