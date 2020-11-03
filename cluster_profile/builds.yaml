@@ -16,6 +16,7 @@ builds:
   cluster:
     subsampling_scheme: cluster_sampling
     geographic_scale: country
+    subclades: "cluster_profile/subclades_EU.tsv"
     country: United Kingdom
     title: "Phylogenetic analysis of SARS-CoV-2 clusters in their international context"
 
