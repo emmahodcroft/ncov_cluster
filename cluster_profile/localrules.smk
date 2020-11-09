@@ -1,4 +1,4 @@
-localrules: filter, partition_sequences, aggregate_alignments, mask, adjust_metadata_regions, clades, colors, recency, export, incorporate_travel_history,   finalize,  rename_legacy_clades
+localrules: clades, colors, recency, export, rename_legacy_clades
 
 
 ruleorder: finalize_swiss > finalize
