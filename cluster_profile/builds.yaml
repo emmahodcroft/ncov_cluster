@@ -58,8 +58,8 @@ subsampling:
   cluster_sampling:
     # Focal samples for country
     cluster:
-      group_by: "division year month"
-      seq_per_group: 5000
+      group_by: "division year month" # dummy variable - change in localrules
+      seq_per_group: 900 # dummy variable - change in localrules
     # Contextual samples from globe
     global:
       group_by: "year month"
@@ -105,3 +105,4 @@ files:
   colors: "cluster_profile/colors.tsv"
   auspice_config: "cluster_profile/auspice_config_cluster.json"
   description: "cluster_profile/description.md"
+  include: "cluster_profile/include.txt"

@@ -2,7 +2,7 @@ localrules: filter, partition_sequences, aggregate_alignments, mask, adjust_meta
 
 
 ruleorder: finalize_swiss > finalize
-ruleorder: extract_cluster > subsample
+ruleorder: filter_cluster > subsample
 
 rule add_labels:
     message: "Remove extraneous colorings for main build and move frequencies"
@@ -50,7 +50,7 @@ rule extract_cluster:
         cluster = "cluster_profile/clusters/cluster_{build_name}.txt",
         alignment = rules.mask.output.alignment
     output:
-        cluster_sample = "results/{build_name}/sample-cluster.fasta"
+        cluster_sample = "results/{build_name}/sample-precluster.fasta"
     run:
         from Bio import SeqIO
 
@@ -64,3 +64,23 @@ rule extract_cluster:
 
         seq_out.close()
 
+rule filter_cluster:
+    input:
+        sequences = rules.extract_cluster.output.cluster_sample,
+        metadata = rules.download.output.metadata,
+        include = config["files"]["include"]
+    output:
+        sequences = "results/{build_name}/sample-cluster.fasta"
+    log:
+        "logs/subsample_{build_name}_cluster.txt"
+    conda: config["conda_environment"]
+    shell:
+        """
+        augur filter \
+            --sequences {input.sequences} \
+            --metadata {input.metadata} \
+            --include {input.include} \
+            --group-by "country year month" \
+            --sequences-per-group 900 \
+            --output {output.sequences} 2>&1 | tee {log}
+        """
