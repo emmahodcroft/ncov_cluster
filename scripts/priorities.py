@@ -99,6 +99,14 @@ def calculate_snp_matrix(fastafile, consensus=None, zipped=False, fill_value=110
 # Function adapted from https://github.com/gtonkinhill/pairsnp-python
 def calculate_distance_matrix(sparse_matrix_A, sparse_matrix_B, consensus):
 
+    def convert_to_64bit_indices(A):
+        A.indptr = np.array(A.indptr, copy=False, dtype=np.int64)
+        A.indices = np.array(A.indices, copy=False, dtype=np.int64)
+        return A
+
+    sparse_matrix_A = convert_to_64bit_indices(sparse_matrix_A)
+    sparse_matrix_B = convert_to_64bit_indices(sparse_matrix_B)
+
     n_seqs_A = sparse_matrix_A.shape[0]
     n_seqs_B = sparse_matrix_B.shape[0]
 
