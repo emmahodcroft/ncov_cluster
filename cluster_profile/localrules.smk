@@ -80,7 +80,7 @@ rule filter_cluster:
             --sequences {input.sequences} \
             --metadata {input.metadata} \
             --include {input.include} \
-            --group-by "country year month" \
+            --group-by country year month \
             --sequences-per-group 900 \
             --output {output.sequences} 2>&1 | tee {log}
         """
