@@ -67,10 +67,34 @@ Kufstein	Tyrol
 See	Tyrol
 Kappl	Tyrol
 Sölden	Tyrol
-Pfunden	Tyrol
+Pfunden	Tyrols
 Galtür	Tyrol
 Nauders	Tyrol
 Tösens	Tyrol
 Pettneu Am Arlberg	Tyrol
 Liverpool	England
 Siena	Tuscany
+Perm	Perm Krai
+Zahedan	Sistan and Baluchestan
+Beruwala	Kalutara
+Frankfurt	Hesse
+New Delhi	Delhi
+Puerto Natales	Magallanes
+Punta Arenas	Magallanes
+Coyhaique	Aysén
+Puerto Montt	Los Lagos
+Temuco	Araucanía
+Concepcion	Biobío
+Chillan	Ñuble
+Talca	Maule
+Rancagua	O'Higgins
+Vina del Mar	Valparaiso
+Huasco	Atacama
+Copiapo	Atacama
+Caldera	Atacama
+Chanaral	Atacama
+Domeyko	Atacama
+El Salvador	Atacama
+Freirina	Atacama
+Paipote	Atacama
+Tierra Amarilla	Atacama
