@@ -45,14 +45,14 @@ region	Europe	#BBBC49
 region	North America	#E29D39
 region	South America	#E1502A
 
-clade_membership	19A	#79d6c7
-clade_membership	19B	#79d6c7
-clade_membership	20A	#ffda4d
-clade_membership	20B	#ffda4d
-clade_membership	20C	#ffda4d
+clade_membership	19A	#60AA9E
+clade_membership	19B	#60AA9E
+clade_membership	20A	#D9AD3D
+clade_membership	20B	#D9AD3D
+clade_membership	20C	#D9AD3D
 
-clade_membership	20A.EU1	#ff8d3d
-clade_membership	20A.EU2	#65beeb
+clade_membership	20A.EU1	#E67030
+clade_membership	20A.EU2	#5097BA
 clade_membership	S.S98F	#911eb4
 clade_membership	S.D80Y	#3cb44b
 clade_membership	S.N439K	#fb9a99
