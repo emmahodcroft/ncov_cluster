@@ -1,0 +1,279 @@
++ [[ feat/add-nextstrain-clades-in-metadata-for-master == master ]]
++ ./bin/upload-to-s3 --quiet data/gisaid.ndjson s3://nextstrain-ncov-private/branch/feat/add-nextstrain-clades-in-metadata-for-master/gisaid.ndjson.gz
+3507793ea4aaa8ed70bb91b1034bbcda8999761a7f4bdae4b9c7ff7dad3b30ba data/gisaid.ndjson
+3507793ea4aaa8ed70bb91b1034bbcda8999761a7f4bdae4b9c7ff7dad3b30ba s3://nextstrain-ncov-private/branch/feat/add-nextstrain-clades-in-metadata-for-master/gisaid.ndjson.gz
++ echo ---
++ df -h
+Files are identical, skipping upload
+---
++ echo PWD=/home/runner/work/ncov-ingest/ncov-ingest
++ echo ---
++ echo /mnt:
+Filesystem      Size  Used Avail Use% Mounted on
++ du -bsch /mnt/DATALOSS_WARNING_README.txt /mnt/lost+found
+udev            3.4G     0  3.4G   0% /dev
+tmpfs           693M  684K  693M   1% /run
+/dev/sdb1        84G   65G   20G  77% /
+tmpfs           3.4G  8.0K  3.4G   1% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           3.4G     0  3.4G   0% /sys/fs/cgroup
+/dev/sdb15      105M  3.6M  101M   4% /boot/efi
+/dev/sda1        14G   41M   13G   1% /mnt
+PWD=/home/runner/work/ncov-ingest/ncov-ingest
+---
+/mnt:
+333 /mnt/DATALOSS_WARNING_README.txt
+16K /mnt/lost+found
+17K total
++ true
++ sort -h
++ echo ---
+---
++ echo data/gisaid:
+data/gisaid:
++ du -bsch 'data/gisaid/*'
++ sort -h
+0   total
++ true
+---
++ echo ---
+tmp/:
++ echo tmp/:
++ du -bsch 'tmp/*'
+0   total
++ sort -h
++ true
++ echo ---
+---
+++ mktemp -t flagged-annotations-XXXXXX
++ flagged_annotations=/tmp/flagged-annotations-wWnqdl
++ trap 'rm -f '\''/tmp/flagged-annotations-wWnqdl'\''' EXIT
++ ./bin/transform-gisaid data/gisaid.ndjson --output-metadata data/gisaid/metadata.tsv --output-fasta data/gisaid/sequences.fasta --output-unix-newline
++ echo ---
++ df -h
+---
++ echo PWD=/home/runner/work/ncov-ingest/ncov-ingest
+Filesystem      Size  Used Avail Use% Mounted on
++ echo ---
+udev            3.4G     0  3.4G   0% /dev
+tmpfs           693M  684K  693M   1% /run
+/dev/sdb1        84G   68G   16G  82% /
+tmpfs           3.4G  8.0K  3.4G   1% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           3.4G     0  3.4G   0% /sys/fs/cgroup
+/dev/sdb15      105M  3.6M  101M   4% /boot/efi
+/dev/sda1        14G   41M   13G   1% /mnt
+PWD=/home/runner/work/ncov-ingest/ncov-ingest
+---
+/mnt:
++ echo /mnt:
++ du -bsch /mnt/DATALOSS_WARNING_README.txt /mnt/lost+found
+333 /mnt/DATALOSS_WARNING_README.txt
+16K /mnt/lost+found
+17K total
++ true
++ sort -h
++ echo ---
++ echo data/gisaid:
++ du -bsch data/gisaid/additional_info.tsv data/gisaid/metadata.tsv data/gisaid/sequences.fasta
+---
+data/gisaid:
++ echo ---
++ echo tmp/:
++ du -bsch 'tmp/*'
+5.3M    data/gisaid/additional_info.tsv
+45M data/gisaid/metadata.tsv
+3.7G    data/gisaid/sequences.fasta
+3.8G    total
+---
+tmp/:
+0   total
++ true
++ sort -h
++ echo ---
+---
++ aws s3 cp --no-progress s3://nextstrain-ncov-private/branch/feat/add-nextstrain-clades-in-metadata-for-master/nextclade.clades.tsv.gz -
++ gunzip -cfq
++ echo ---
+---
++ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3.4G     0  3.4G   0% /dev
+tmpfs           693M  684K  693M   1% /run
+/dev/sdb1        84G   68G   16G  82% /
+tmpfs           3.4G  8.0K  3.4G   1% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
++ echo PWD=/home/runner/work/ncov-ingest/ncov-ingest
++ echo ---
++ echo /mnt:
++ du -bsch /mnt/DATALOSS_WARNING_README.txt /mnt/lost+found
+tmpfs           3.4G     0  3.4G   0% /sys/fs/cgroup
+/dev/sdb15      105M  3.6M  101M   4% /boot/efi
+/dev/sda1        14G   41M   13G   1% /mnt
+PWD=/home/runner/work/ncov-ingest/ncov-ingest
+---
+/mnt:
+333 /mnt/DATALOSS_WARNING_README.txt
+16K /mnt/lost+found
+17K total
++ true
++ sort -h
++ echo ---
+---
++ echo data/gisaid:
+data/gisaid:
++ du -bsch data/gisaid/additional_info.tsv data/gisaid/metadata.tsv data/gisaid/nextclade.clades.tsv data/gisaid/sequences.fasta
+5.3M    data/gisaid/additional_info.tsv
++ echo ---
+45M data/gisaid/metadata.tsv
++ echo tmp/:
++ du -bsch 'tmp/*'
+3.5M    data/gisaid/nextclade.clades.tsv
+3.7G    data/gisaid/sequences.fasta
+3.8G    total
+---
+tmp/:
+0   total
++ true
++ sort -h
++ echo ---
+---
++ ./bin/filter-fasta --input_fasta=data/gisaid/sequences.fasta --input_tsv=data/gisaid/nextclade.clades.tsv --output_fasta=data/gisaid/nextclade.sequences.fasta
++ echo ---
+---
++ df -h
+Filesystem      Size  Used Avail Use% Mounted on
++ echo PWD=/home/runner/work/ncov-ingest/ncov-ingest
++ echo ---
++ echo /mnt:
++ du -bsch /mnt/DATALOSS_WARNING_README.txt /mnt/lost+found
+udev            3.4G     0  3.4G   0% /dev
+tmpfs           693M  684K  693M   1% /run
+/dev/sdb1        84G   68G   16G  82% /
+tmpfs           3.4G  8.0K  3.4G   1% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           3.4G     0  3.4G   0% /sys/fs/cgroup
+/dev/sdb15      105M  3.6M  101M   4% /boot/efi
+/dev/sda1        14G   41M   13G   1% /mnt
+PWD=/home/runner/work/ncov-ingest/ncov-ingest
+---
+/mnt:
+333 /mnt/DATALOSS_WARNING_README.txt
+16K /mnt/lost+found
+17K total
++ sort -h
++ true
++ echo ---
+---
++ echo data/gisaid:
+data/gisaid:
++ du -bsch data/gisaid/additional_info.tsv data/gisaid/metadata.tsv data/gisaid/nextclade.clades.tsv data/gisaid/nextclade.sequences.fasta data/gisaid/sequences.fasta
+5.3M    data/gisaid/additional_info.tsv
++ echo ---
+45M data/gisaid/metadata.tsv
++ echo tmp/:
+3.5M    data/gisaid/nextclade.clades.tsv
++ du -bsch 'tmp/*'
+240M    data/gisaid/nextclade.sequences.fasta
+3.7G    data/gisaid/sequences.fasta
+4.0G    total
+---
+tmp/:
+0   total
++ true
++ sort -h
++ echo ---
+---
++ ./bin/run-nextclade data/gisaid/nextclade.sequences.fasta data/gisaid/nextclade.clades.new.tsv
+Using 2 parallel processes
+Processing tmp/fasta/nextclade.sequences.fasta.batch-00000.fasta
+Processing tmp/fasta/nextclade.sequences.fasta.batch-00001.fasta
+Error: in sequence "USA/WA-UW-4570/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "env/Wuhan/IVDC-HBF13/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Canada/ON_MU-S401/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "env/Wuhan/IVDC-HBF54/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Canada/ON_MU-S461/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "pangolin/China/MP789/2019": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "USA/MO-WUSTL033/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "China/WF0006/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Australia/WA16/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "China/WF0009/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Australia/WA18/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "China/WF0017/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Australia/WA19/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "China/WF0023/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Australia/WA24/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Australia/WA27/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Australia/WA33/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Australia/WA40/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Australia/WA54/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "USA/OH-OSUP0014/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Australia/WA57/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "USA/OH-OSUP0019/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0001/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "USA/WA-UW-3973/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0010/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "SaudiArabia/KAUST-Makkah155/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0011/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "USA/CT-UW-6568/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0012/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "England/NORW-E899A/2020": Unable to align: no seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0013/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Wuhan/WHUH020/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0016/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0017/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0018/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0019/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0020/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0021/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0022/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0023/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0024/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0026/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0029/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0030/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0034/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0035/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0051/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0053/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0057/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0060/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0064/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "USA/WA-UW-1501/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0065/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0066/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0067/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0068/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0069/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0070/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0071/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0072/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0074/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0075/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0076/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0077/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0078/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0079/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0080/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0081/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0082/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0083/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0084/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "USA/FL-Miami-04_UMTL-97QX/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "USA/FL-Miami-06_UMTL-A6U4/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0015/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0027/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0043/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0099/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "India/KA-InStem-NCBS-0100/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Nigeria/ON185-CV56/2020": Unable to align: no seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "Oman/205037418/2020": Unable to align: too many insertions, deletions, duplications, or ambiguous seed matches. Please note that this sequence will not be included in the results.
+Error: in sequence "USA/WA-UW-4572/2020": Unable to align: no seed matches. Please note that this sequence will not be included in the results.
+Processing tmp/fasta/nextclade.sequences.fasta.batch-00002.fasta
+Processing tmp/fasta/nextclade.sequences.fasta.batch-00003.fasta
+Processing tmp/fasta/nextclade.sequences.fasta.batch-00004.fasta
+Processing tmp/fasta/nextclade.sequences.fasta.batch-00005.fasta
+Processing tmp/fasta/nextclade.sequences.fasta.batch-00006.fasta
+Processing tmp/fasta/nextclade.sequences.fasta.batch-00007.fasta
+Processing tmp/fasta/nextclade.sequences.fasta.batch-00008.fasta
+Processing tmp/fasta/nextclade.sequences.fasta.batch-00009.fasta
