@@ -1,0 +1,59 @@
+country	Russia	#5E1D9D
+country	Serbia	#4D22AD
+country	Europe	#4530BB
+country	Latvia	#403FC6
+country	Slovakia	#3F51CC
+country	Slovenia	#3F62D0
+country	Poland	#4272CE
+country	Belarus	#4681CA
+country	Estonia	#4B8EC2
+country	Lithuania	#5199B8
+country	Hungary	#58A2AC
+country	Croatia	#60AA9F
+country	France	#69B091
+country	Iceland	#72B584
+country	Norway	#7DB877
+country	Denmark	#89BB6B
+country	Netherlands	#95BD61
+country	Belgium	#A1BE58
+country	Luxembourg	#AEBD50
+country	Germany	#BABC4A
+country	Austria	#C5B945
+country	Switzerland	#D0B441
+country	Italy	#D8AE3E
+country	Spain	#DFA43B
+country	Czech Republic	#E49938
+country	United Kingdom	#E68B35
+country	Ireland	#E67A32
+country	Finland	#E4672E
+country	Sweden	#E1522A
+country	Portugal	#DE3D27
+country	Greece	#DB2823
+country Israel  #EB1853
+
+recency	Older	#416DCE
+recency	One month ago	#59A3AA
+recency	One week ago	#84BA6F
+recency	3-7 days ago	#BBBC49
+recency	1-2 days ago	#E29D39
+recency	New	#E1502A
+
+region	Oceania	#416DCE
+region	Asia	#59A3AA
+region	Africa	#84BA6F
+region	Europe	#BBBC49
+region	North America	#E29D39
+region	South America	#E1502A
+
+clade_membership	19A	#79d6c7
+clade_membership	19B	#79d6c7
+clade_membership	20A	#ffda4d
+clade_membership	20B	#ffda4d
+clade_membership	20C	#ffda4d
+
+clade_membership	20A.EU1	#ff8d3d
+clade_membership	20A.EU2	#65beeb
+clade_membership	S.S98F	#911eb4
+clade_membership	S.D80Y	#3cb44b
+clade_membership	S.N439K	#fb9a99
+
