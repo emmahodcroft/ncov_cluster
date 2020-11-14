@@ -1005,3 +1005,7 @@ Ireland/NVRL-20G44563/2020
 Ireland/NVRL-20G44565/2020
 Ireland/NVRL-20G44567/2020
 Ireland/NVRL-20G44603/2020
+
+# Two UK with seemingly wrong dates:
+England/PORT-2D2111/2020
+England/LIVE-1DD7AC/2020
