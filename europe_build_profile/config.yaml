@@ -1,6 +1,6 @@
 configfile:
   - defaults/parameters.yaml
-  - ecdc_profile/builds.yaml
+  - europe_build_profile/builds.yaml
 
 keep-going: True
 printshellcmds: True
