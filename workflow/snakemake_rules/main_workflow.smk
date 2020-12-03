@@ -365,7 +365,7 @@ rule subsample:
          - priority: {params.priority_argument}
         """
     input:
-        sequences = rules.mask.output.alignment,
+        sequences = "results/masked.fasta",
         metadata = rules.download.output.metadata,
         include = config["files"]["include"],
         priorities = get_priorities
@@ -409,7 +409,7 @@ rule proximity_score:
         genetic similiarity to sequences in focal set for build '{wildcards.build_name}'.
         """
     input:
-        alignment = rules.mask.output.alignment,
+        alignment = "results/masked.fasta",
         metadata = rules.download.output.metadata,
         reference = config["files"]["reference"],
         focal_alignment = "results/{build_name}/sample-{focus}.fasta"

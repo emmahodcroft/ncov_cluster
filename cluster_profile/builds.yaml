@@ -21,6 +21,13 @@ builds:
     title: "Phylogenetic analysis of SARS-CoV-2 clusters in their international context"
 
 inactive_builds:
+  denmark:
+    subsampling_scheme: denmark
+    geographic_scale: country
+    region: Europe
+    country: Denmark
+    title: "Phylogenetic analysis of Swiss SARS-CoV-2 genomes in their international context"
+    
   basel-stadt:
     subsampling_scheme: canton
     geographic_scale: division
@@ -29,12 +36,12 @@ inactive_builds:
     division: Basel-Stadt
 
 subsampling:
-  # Default subsampling logic for countries
-  switzerland:
+  # denmark subsampling logic for countries
+  denmark:
     # Focal samples for country
     country:
       group_by: "division year month"
-      seq_per_group: 200
+      seq_per_group: 400
       exclude: "--exclude-where 'country!={country}'"
     # Contextual samples from country's region
     region:

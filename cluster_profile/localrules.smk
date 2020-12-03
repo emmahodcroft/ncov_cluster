@@ -1,8 +1,10 @@
-localrules: clades, colors, recency, export, rename_legacy_clades
+localrules: clades, colors, recency, export, rename_legacy_clades, upload, download_masked, download
 
 
 ruleorder: finalize_swiss > finalize
 ruleorder: filter_cluster > subsample
+ruleorder: download_masked > mask
+ruleorder: download_masked > diagnostic
 
 rule add_labels:
     message: "Remove extraneous colorings for main build and move frequencies"
@@ -48,7 +50,7 @@ rule finalize_swiss:
 rule extract_cluster:
     input:
         cluster = "cluster_profile/clusters/cluster_{build_name}.txt",
-        alignment = rules.mask.output.alignment
+        alignment = "results/masked.fasta"
     output:
         cluster_sample = "results/{build_name}/sample-precluster.fasta"
     run:
@@ -83,4 +85,20 @@ rule filter_cluster:
             --group-by country year month \
             --sequences-per-group 900 \
             --output {output.sequences} 2>&1 | tee {log}
+        """
+
+rule download_masked:
+    message: "Downloading metadata and fasta files from S3"
+    output:
+        sequences = "results/masked.fasta",
+        diagnostics = "results/sequence-diagnostics.tsv",
+        flagged = "results/flagged-sequences.tsv",
+        to_exclude = "results/to-exclude.txt"
+    conda: config["conda_environment"]
+    shell:
+        """
+        aws s3 cp s3://nextstrain-ncov-private/masked.fasta.gz - | gunzip -cq > {output.sequences:q}
+        aws s3 cp s3://nextstrain-ncov-private/sequence-diagnostics.tsv.gz - | gunzip -cq > {output.diagnostics:q}
+        aws s3 cp s3://nextstrain-ncov-private/flagged-sequences.tsv.gz - | gunzip -cq > {output.flagged:q}
+        aws s3 cp s3://nextstrain-ncov-private/to-exclude.txt.gz - | gunzip -cq > {output.to_exclude:q}
         """
