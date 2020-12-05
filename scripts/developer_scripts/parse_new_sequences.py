@@ -11,6 +11,9 @@ register_matplotlib_converters()
 def bold(s):
     return('\033[1m' + s + '\033[0m')
 
+def strike(s):
+    return('\u0336'.join(s) + '\u0336')
+
 # Cut a string of the format "key: content" into a tuple (key, content)
 def cut(s):
     key = s.split(":")[0]
@@ -152,6 +155,7 @@ def plot_dates(data, path):
         plt.title(country)
         plt.xticks(rotation=45, ha="right", size = 7)
         plt.savefig(path + "dates_" + country)
+        plt.close()
 
 
 # Count for every country the number of new sequences
@@ -241,6 +245,7 @@ def collect_labs(data, table_file_name):
         lab_dictionary[country][description.lower()] = handle
 
 
+    lab_UK = lab_dictionary["United Kingdom"]["COVID-19 Genomics UK Consortium".lower()]
     lab_collection = {}
 
     print("\nSubmitting labs:\n(Note: small differences in spelling might cause lab to not be identified. Consider adjusting the spelling in the spreadsheet!)\n")
@@ -255,14 +260,17 @@ def collect_labs(data, table_file_name):
             for lab in submitting_labs[region][country]:
                 s += lab + ": "
                 if country in lab_dictionary and lab.lower() in lab_dictionary[country]:
-                    s += bold(lab_dictionary[country][lab.lower()])
+                    k = lab_dictionary[country][lab.lower()]
                     for l in lab_dictionary[country][lab.lower()].split(", "):
                         if l not in lab_collection[region][country]:
                             lab_collection[region][country].append(l)
                 else:
-                    s += bold("?")
+                    k = "?"
                     lab_collection[region][country].append("???")
-                s += "\n"
+                if country == "United Kingdom":
+                    k = strike(k) + " " + lab_UK
+
+                s += bold(k) + "\n"
             print(s)
 
     print("----------------------------------------------\n")
@@ -273,7 +281,11 @@ def collect_labs(data, table_file_name):
             for lab in originating_labs[region][country]:
                 s += lab
                 if country in lab_dictionary and lab.lower() in lab_dictionary[country]:
-                    s += ": " + bold(lab_dictionary[country][lab.lower()])
+                    s += ": "
+                    k = lab_dictionary[country][lab.lower()]
+                    if country == "United Kingdom":
+                        k = strike(k) + " " + lab_UK
+                    s += bold(k)
                     for l in lab_dictionary[country][lab.lower()].split(", "):
                         if l not in lab_collection[region][country]:
                             lab_collection[region][country].append(l)
@@ -288,12 +300,21 @@ def collect_labs(data, table_file_name):
             for author in authors[region][country]:
                 s += author
                 if country in lab_dictionary and author.lower() in lab_dictionary[country]:
-                    s += ": " + bold(lab_dictionary[country][author.lower()])
+                    s += ": "
+                    k = lab_dictionary[country][author.lower()]
+                    if country == "United Kingdom":
+                        k = strike(k) + " " + lab_UK
+                    s += bold(k)
                     for a in lab_dictionary[country][author.lower()].split(", "):
                         if a not in lab_collection[region][country]:
                             lab_collection[region][country].append(a)
                 s += "\n"
             print(s)
+
+
+    if "Europe" in lab_collection:
+        if "United Kingdom" in lab_collection["Europe"]:
+            lab_collection["Europe"]["United Kingdom"] = [lab_UK]
 
     return lab_collection
 
@@ -367,7 +388,7 @@ def prepare_tweet(counts, lab_collection):
         ("New sequences from ", " can be seen on ")
     ]
 
-    the = ["United Kingdom", "USA"]
+    the = ["United Kingdom", "USA", "Democratic Republic of the Congo"]
 
     total = 0
     tweet_collection = {}
@@ -386,7 +407,9 @@ def prepare_tweet(counts, lab_collection):
                 s += country + " (" + str(number) + ")"
                 labs = lab_collection[region][country]
                 countries.append(s)
-                handles = handles + labs
+                for l in labs:
+                    if l not in handles:
+                        handles.append(l)
             tweet_collection[region] = (countries, handles)
 
             if len(countries) > 1:
@@ -430,10 +453,11 @@ def prepare_tweet(counts, lab_collection):
     while len(lengths) > 0:
         current_region = min(lengths, key=lengths.get)
         best_partner = ""
+        current_length = lengths[current_region]
         for region, length in sorted(lengths.items(), key=lambda x: x[1]):
             if region == current_region:
                 continue
-            if lengths[current_region] + length > char_available:
+            if current_length + length > char_available:
                 break
             best_partner = region
 
@@ -443,18 +467,22 @@ def prepare_tweet(counts, lab_collection):
         p = "[pic_" + current_region.replace(" ", "") + "]"
         l = links[current_region]
         if best_partner != "":
+            current_length += lengths[best_partner]
             lengths.pop(best_partner)
             c += tweet_collection[best_partner][0]
             h += tweet_collection[best_partner][1]
             l += " and " + links[best_partner]
             p += " " + "[pic_" + best_partner.replace(" ", "") + "]"
 
-
         if len(c) > 1:
             c = ", ".join(c[:-1]) + " and " + c[-1]
         else:
             c = c[0]
-        h = ", ".join(h)
+
+        if current_length > char_available:
+            h = " ".join(h)
+        else:
+            h = ", ".join(h)
 
         starter = random.choice(starters)
         s = starter[0] + c + starter[1] + l + ".\n\n"

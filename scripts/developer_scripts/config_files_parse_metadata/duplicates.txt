@@ -27,3 +27,6 @@ Cordoba
 Cuenca
 Pierce County
 Taylor County
+Marion County
+Columbus
+Clark County
