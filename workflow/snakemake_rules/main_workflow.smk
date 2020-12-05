@@ -368,7 +368,8 @@ rule subsample:
         sequences = "results/masked.fasta",
         metadata = rules.download.output.metadata,
         include = config["files"]["include"],
-        priorities = get_priorities
+        priorities = get_priorities,
+        exclude = config["files"]["exclude"]
     output:
         sequences = "results/{build_name}/sample-{subsample}.fasta"
     log:
@@ -390,6 +391,7 @@ rule subsample:
             --sequences {input.sequences} \
             --metadata {input.metadata} \
             --include {input.include} \
+            --exclude {input.exclude} \
             {params.min_date} \
             {params.max_date} \
             {params.exclude_argument} \
