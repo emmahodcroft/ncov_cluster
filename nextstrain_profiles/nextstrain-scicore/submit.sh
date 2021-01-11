@@ -7,7 +7,7 @@
 source /scicore/home/neher/neher/miniconda3/etc/profile.d/conda.sh
 conda activate nextstrain
 export AUGUR_MINIFY_JSON=1
-export AUGUR_RECURSION_LIMIT=10000
+export AUGUR_RECURSION_LIMIT=20000
 
 {exec_job}
 
