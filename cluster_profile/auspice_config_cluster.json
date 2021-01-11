@@ -118,6 +118,8 @@
     "country",
     "region",
     "recency",
+    "clade_membership",
+    "subclade_membership",
     "division",
     "location",
     "host",

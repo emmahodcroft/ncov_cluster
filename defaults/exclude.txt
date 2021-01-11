@@ -1207,6 +1207,46 @@ USA/MA-JLL-796350N/2020
 # Has a sample date of 30 March but is identical to sequences in Oct/Nov, and was submitted with a batch all from autumn; see https://bedfordlab.slack.com/archives/CTZKJC7PZ/p1607015177020000?thread_ts=1607001399.018700&cid=CTZKJC7PZ
 Denmark/DCGC-12020/2020
 
+# Seems far too diverged compared to date (18 Mar & 16 mar but lines up with seqs from Nov)
+Tunisia/4107/2020
+Tunisia/3942/2020
+
+# ## For Cluster analyses:
 # Two UK with seemingly wrong dates:
 England/PORT-2D2111/2020
 England/LIVE-1DD7AC/2020
+
+#Seems overdiverged compared to date:
+Italy/APU-IZSPB_321PT/2020
+Netherlands/NB-EMC-279/2020
+Australia/QLD1278/2020
+Australia/QLD1276/2020
+Sweden/20-08979/2020
+England/LIVE-DCA612/2020
+Netherlands/ZE-EMC-74/2020
+Denmark/DCGC-16747/2020
+Tunisia/19695/2020
+
+# Temporarily excluding early Spain samples until confirmed
+# EU1
+Spain/IB-IBV-99010753/2020
+Spain/IB-IBV-99010754/2020
+Spain/IB-IBV-99010756/2020
+# EU2
+Spain/IB-IBV-99010769/2020
+Spain/IB-IBV-99010761/2020
+
+# Wrong date - given as 2010
+Italy/LAZ-INMI-92/2020
+Italy/LAZ-INMI-93/2020
+Italy/LAZ-INMI-94/2020
+Italy/LAZ-INMI-95/2020
+
+# wrong date - given as 2009
+Spain/RI-IBV-99010966/2009
+
+# mixed bases which means it is sometimes 'outside' the cluster - confirmed with submitters
+Israel/CVL-46754/2020
+
+
+

@@ -65,11 +65,11 @@ subsampling:
   cluster_sampling:
     # Focal samples for country
     cluster:
-      group_by: "division year month" # dummy variable - change in localrules
-      seq_per_group: 900 # dummy variable - change in localrules
+      group_by: "country year month" # dummy variable - change in localrules
+      max_sequences: 5000 # dummy variable - change in localrules
     # Contextual samples from globe
     global:
-      group_by: "year month"
+      group_by: "year month region"
       seq_per_group: 30
       priorities:
         type: "proximity"

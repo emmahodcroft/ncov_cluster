@@ -1,10 +1,10 @@
-localrules: clades, colors, recency, export, rename_legacy_clades, upload, download_masked, download
+localrules: colors, export, rename_legacy_clades, upload, download_masked, download
 
 
 ruleorder: finalize_swiss > finalize
 ruleorder: filter_cluster > subsample
-ruleorder: download_masked > mask
-ruleorder: download_masked > diagnostic
+#ruleorder: download_masked > mask
+#ruleorder: download_masked > diagnostic
 
 rule add_labels:
     message: "Remove extraneous colorings for main build and move frequencies"
@@ -32,9 +32,11 @@ rule finalize_swiss:
     message: "Remove extraneous colorings for main build and move frequencies"
     input:
         auspice_json = rules.add_labels.output.auspice_json,
-        frequencies = rules.tip_frequencies.output.tip_frequencies_json
+        frequencies = rules.tip_frequencies.output.tip_frequencies_json,
+        root_json = rules.export.output.root_sequence_json
     output:
         auspice_json = "auspice/ncov_{build_name}.json",
+        root_json = "auspice/ncov_{build_name}_root-sequence.json",
         tip_frequency_json = "auspice/ncov_{build_name}_tip-frequencies.json"
     log:
         "logs/fix_colorings_{build_name}.txt"
@@ -44,13 +46,14 @@ rule finalize_swiss:
         python3 scripts/fix-colorings.py \
             --input {input.auspice_json} \
             --output {output.auspice_json} 2>&1 | tee {log} &&
-        cp {input.frequencies} {output.tip_frequency_json}
+        cp {input.frequencies} {output.tip_frequency_json} &&
+        cp {input.root_json} {output.root_json}
         """
 
 rule extract_cluster:
     input:
         cluster = "cluster_profile/clusters/cluster_{build_name}.txt",
-        alignment = "results/masked.fasta"
+        alignment = "results/filtered.fasta"
     output:
         cluster_sample = "results/{build_name}/sample-precluster.fasta"
     run:
@@ -83,22 +86,23 @@ rule filter_cluster:
             --metadata {input.metadata} \
             --include {input.include} \
             --group-by country year month \
-            --sequences-per-group 900 \
+            --subsample-max-sequences 5000 \
             --output {output.sequences} 2>&1 | tee {log}
         """
 
 rule download_masked:
     message: "Downloading metadata and fasta files from S3"
     output:
-        sequences = "results/masked.fasta",
+        sequences = "results/filtered.fasta",
         diagnostics = "results/sequence-diagnostics.tsv",
         flagged = "results/flagged-sequences.tsv",
         to_exclude = "results/to-exclude.txt"
     conda: config["conda_environment"]
     shell:
         """
-        aws s3 cp s3://nextstrain-ncov-private/masked.fasta.gz - | gunzip -cq > {output.sequences:q}
-        aws s3 cp s3://nextstrain-ncov-private/sequence-diagnostics.tsv.gz - | gunzip -cq > {output.diagnostics:q}
-        aws s3 cp s3://nextstrain-ncov-private/flagged-sequences.tsv.gz - | gunzip -cq > {output.flagged:q}
-        aws s3 cp s3://nextstrain-ncov-private/to-exclude.txt.gz - | gunzip -cq > {output.to_exclude:q}
+        aws s3 cp s3://nextstrain-ncov-private/sequence-diagnostics.tsv.xz - | xz -cdq > {output.diagnostics:q}
+        aws s3 cp s3://nextstrain-ncov-private/flagged-sequences.tsv.xz - | xz -cdq > {output.flagged:q}
+        aws s3 cp s3://nextstrain-ncov-private/to-exclude.txt.xz - | xz -cdq > {output.to_exclude:q}
+        aws s3 cp s3://nextstrain-ncov-private/filtered.fasta.xz - | xz -cdq > {output.sequences:q}
         """
+        #aws s3 cp s3://nextstrain-ncov-private/masked.fasta.xz - | xz -cdq > {output.sequences:q}
